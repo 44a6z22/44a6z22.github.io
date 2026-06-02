@@ -1,14 +1,1112 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10.34</title>
-  </head>
-  <body>
-    <div style="display: flex; jusify-content: center">
-      <h2> Crypched </h2>
-    </div> 
-  </body>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Granola Haila — Fait Maison Avec Amour 🌞</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+  👩‍🎨 DESIGNER CONTROL PANEL
+  All the things you'll want to change are right here.
+  Scroll below to find the HTML sections for content edits.
+============================================================ -->
+<style>
+/* ──────────────────────────────────────────────────────────────
+   🎨 COLOUR PALETTE  — change these to retheme the whole page
+   ────────────────────────────────────────────────────────────── */
+:root {
+  /* Page background & body */
+  --cream:             #FEF3E4;   /* main warm background */
+  --cream-light:       #FFFAF3;   /* card / review background */
+
+  /* Brand colours */
+  --purple:            #2B1A5C;   /* dark headings, nav, footer */
+  --purple-mid:        #4A2F8F;   /* unused — keep for future use */
+  --brown:             #5C3D28;   /* body text */
+  --sun:               #F6A623;   /* accent orange/gold */
+
+  /* WhatsApp button */
+  --wa:                #25D366;   /* WhatsApp green */
+
+  /* ── Flavour card accent colours ── */
+  --g-healthy:         #2E7D32;
+  --g-healthy-light:   #E8F5E8;
+
+  --g-tiramisu:        #4A1F05;
+  --g-tiramisu-light:  #F5EAE0;
+
+  --g-paprika:         #B71C1C;
+  --g-paprika-light:   #FDECEA;
+
+  --g-arabian:         #6B5A1A;
+  --g-arabian-light:   #F5F0DC;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   🔤 FONTS  — swap the family names to change fonts
+   (pick any Google Font and update the @import link in <head>)
+   ────────────────────────────────────────────────────────────── */
+:root {
+  --font-display: 'Pacifico', cursive;   /* decorative headings */
+  --font-body:    'Nunito', sans-serif;  /* all other text      */
+}
+
+/* ──────────────────────────────────────────────────────────────
+   📐 SPACING & SHAPE  — adjust overall feel
+   ────────────────────────────────────────────────────────────── */
+:root {
+  --radius-card:    28px;   /* card corner rounding */
+  --radius-btn:    100px;   /* button pill shape    */
+  --radius-badge:  100px;   /* badge pill shape     */
+  --section-pad:    96px;   /* top/bottom section padding */
+}
+
+/* ──────────────────────────────────────────────────────────────
+   ✍️  TYPOGRAPHY SIZES
+   ────────────────────────────────────────────────────────────── */
+:root {
+  --hero-tagline-size: clamp(22px, 4vw, 32px);
+  --section-title-size: clamp(28px, 5vw, 46px);
+  --cta-title-size: clamp(30px, 6vw, 52px);
+  --card-name-size: 26px;
+  --body-text-size: 16px;
+  --small-text-size: 13px;
+}
+
+
+/* ============================================================
+   🚫 STOP HERE — everything below is layout/structure code.
+      You don't need to edit below this line unless you want
+      to change the layout itself.
+============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--brown);
+  overflow-x: hidden;
+}
+
+/* Subtle noise texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 1;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(254,243,228,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(92,61,40,0.08);
+}
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--purple);
+  text-decoration: none;
+}
+.nav-brand span { color: var(--sun); }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links a {
+  font-size: var(--small-text-size);
+  font-weight: 700;
+  color: var(--brown);
+  text-decoration: none;
+  opacity: 0.75;
+  transition: opacity 0.2s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-wa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--wa);
+  color: white !important;
+  opacity: 1 !important;
+  padding: 9px 20px;
+  border-radius: var(--radius-btn);
+  font-weight: 800 !important;
+  font-size: var(--small-text-size);
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+}
+.nav-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+
+@media (max-width: 600px) {
+  .nav-links .hide-mobile { display: none; }
+  nav { padding: 12px 20px; }
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 24px 80px;
+  position: relative;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, #fff8ec, var(--cream) 70%);
+}
+.hero-logo {
+  width: min(380px, 80vw);
+  margin-bottom: 28px;
+  animation: fadeUp 0.9s ease both;
+}
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: var(--hero-tagline-size);
+  color: var(--purple);
+  margin-bottom: 10px;
+  animation: fadeUp 0.9s 0.2s ease both;
+  opacity: 0;
+}
+.hero-sub {
+  font-size: var(--small-text-size);
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--brown);
+  opacity: 0;
+  margin-bottom: 40px;
+  animation: fadeUp 0.9s 0.35s ease both;
+}
+.hero-sub span { color: var(--sun); margin: 0 6px; }
+.hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s ease both;
+}
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--wa);
+  color: white;
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: var(--radius-btn);
+  font-weight: 900;
+  font-size: var(--body-text-size);
+  box-shadow: 0 8px 32px rgba(37,211,102,0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-wa:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(37,211,102,0.45); }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 2px solid var(--purple);
+  color: var(--purple);
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: var(--radius-btn);
+  font-weight: 800;
+  font-size: var(--body-text-size);
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline:hover { background: var(--purple); color: white; }
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeIn 1s 1.2s ease forwards;
+}
+.hero-scroll-text {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--brown);
+  opacity: 0.4;
+}
+.hero-scroll-dot {
+  width: 6px; height: 6px;
+  background: var(--sun);
+  border-radius: 50%;
+  animation: bounce 1.6s infinite;
+}
+.hero-floats { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.float-item {
+  position: absolute;
+  font-size: clamp(24px, 3vw, 40px);
+  opacity: 0.12;
+  animation: floatAnim 8s ease-in-out infinite;
+}
+.float-item:nth-child(1) { top: 15%; left: 6%;   animation-delay: 0s; }
+.float-item:nth-child(2) { top: 20%; right: 8%;  animation-delay: 1.2s; }
+.float-item:nth-child(3) { top: 55%; left: 4%;   animation-delay: 2.4s; }
+.float-item:nth-child(4) { top: 60%; right: 5%;  animation-delay: 0.8s; }
+.float-item:nth-child(5) { top: 80%; left: 12%;  animation-delay: 1.8s; }
+.float-item:nth-child(6) { top: 75%; right: 10%; animation-delay: 3s; }
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+  background: var(--purple);
+  padding: 18px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.85);
+  font-size: var(--small-text-size);
+  font-weight: 700;
+}
+
+/* ── SECTION HEADER ── */
+.sec-header { text-align: center; margin-bottom: 56px; }
+.sec-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sun);
+  background: rgba(246,166,35,0.12);
+  padding: 6px 16px;
+  border-radius: var(--radius-badge);
+  margin-bottom: 14px;
+}
+.sec-title {
+  font-family: var(--font-display);
+  font-size: var(--section-title-size);
+  color: var(--purple);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.sec-sub {
+  font-size: var(--body-text-size);
+  color: var(--brown);
+  opacity: 0.65;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ── FLAVOURS GRID ── */
+.section { padding: var(--section-pad) 24px; }
+.flavours-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+/* ── PRODUCT CARD ── */
+.card {
+  background: var(--cream-light);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 2px 0 rgba(255,255,255,0.8) inset, 0 4px 24px rgba(92,61,40,0.08);
+  border: 1.5px solid rgba(92,61,40,0.06);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.015);
+  box-shadow: 0 20px 56px rgba(92,61,40,0.15);
+}
+.card-media {
+  width: 100%;
+  aspect-ratio: 1/1.65;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+}
+.card-media-fallback {
+  width: 100%;
+  aspect-ratio: 1/1.65;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+}
+.card-body { padding: 22px 20px 24px; }
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: var(--radius-badge);
+  margin-bottom: 12px;
+}
+.card-name {
+  font-family: var(--font-body);
+  font-weight: 900;
+  font-size: var(--card-name-size);
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+.card-desc {
+  font-size: var(--small-text-size);
+  line-height: 1.65;
+  color: #8a6a52;
+  margin-bottom: 20px;
+}
+.card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  border-radius: var(--radius-btn);
+  background: var(--wa);
+  color: white;
+  font-weight: 900;
+  font-size: 14px;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.card-btn:hover { opacity: 0.88; transform: scale(0.98); }
+
+.card-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: stretch;
+}
+.quantity-picker {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.quantity-button {
+  flex: 1 1 30%;
+  min-width: 80px;
+  padding: 10px 12px;
+  border: 1px solid rgba(92,61,40,0.15);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  color: var(--purple);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+}
+.quantity-button:hover {
+  transform: translateY(-1px);
+}
+.quantity-button.active {
+  background: var(--purple);
+  color: white;
+  border-color: var(--purple);
+  box-shadow: 0 12px 24px rgba(43,26,92,0.12);
+}
+.price-tag {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--purple);
+  letter-spacing: 0.2px;
+}
+.price-tag span { color: var(--sun); }
+
+/* Flavour-specific colours */
+.c-healthy  .card-name  { color: var(--g-healthy); }
+.c-healthy  .card-badge { background: var(--g-healthy-light); color: var(--g-healthy); }
+.c-healthy  .card-media-fallback { background: linear-gradient(145deg,#A5D6A7,#2E7D32); }
+
+.c-tiramisu .card-name  { color: var(--g-tiramisu); }
+.c-tiramisu .card-badge { background: var(--g-tiramisu-light); color: var(--g-tiramisu); }
+.c-tiramisu .card-media-fallback { background: linear-gradient(145deg,#A1887F,#3E2723); }
+
+.c-paprika  .card-name  { color: var(--g-paprika); }
+.c-paprika  .card-badge { background: var(--g-paprika-light); color: var(--g-paprika); }
+.c-paprika  .card-media-fallback { background: linear-gradient(145deg,#EF9A9A,#B71C1C); }
+
+.c-arabian  .card-name  { color: var(--g-arabian); }
+.c-arabian  .card-badge { background: var(--g-arabian-light); color: var(--g-arabian); }
+.c-arabian  .card-media-fallback { background: linear-gradient(145deg,#D4C97A,#6B5A1A); }
+
+/* ── ABOUT SECTION ── */
+.about-section {
+  padding: var(--section-pad) 24px;
+  background: var(--purple);
+  position: relative;
+  overflow: hidden;
+}
+.about-section::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 300px; height: 160px;
+  background: var(--cream);
+  border-radius: 0 0 50% 50%;
+}
+.about-section::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 300px; height: 160px;
+  background: var(--cream);
+  border-radius: 50% 50% 0 0;
+}
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.about-inner .sec-label { background: rgba(246,166,35,0.2); }
+.about-inner .sec-title { color: #fff; }
+.about-inner p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 14px;
+}
+.about-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 36px;
+}
+.pill {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.9);
+  padding: 9px 22px;
+  border-radius: var(--radius-btn);
+  font-size: var(--small-text-size);
+  font-weight: 700;
+}
+.about-img-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 48px;
+}
+.about-img-box {
+  width: 160px;
+  height: 220px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.15);
+  transform: rotate(-2deg);
+  transition: transform 0.3s;
+}
+.about-img-box:nth-child(2) { transform: rotate(1.5deg); }
+.about-img-box:nth-child(3) { transform: rotate(-1deg); }
+.about-img-box:nth-child(4) { transform: rotate(2.5deg); }
+.about-img-box:hover { transform: rotate(0deg) scale(1.04); }
+.about-img-box img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+/* ── REVIEWS ── */
+.reviews-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 24px;
+}
+.review-card {
+  background: var(--cream-light);
+  border-radius: 24px;
+  padding: 28px;
+  border: 1.5px solid rgba(92,61,40,0.07);
+  box-shadow: 0 2px 0 rgba(255,255,255,0.9) inset;
+  position: relative;
+}
+.review-card::before {
+  content: '"';
+  position: absolute;
+  top: 18px; right: 26px;
+  font-family: var(--font-display);
+  font-size: 72px;
+  color: var(--sun);
+  opacity: 0.15;
+  line-height: 1;
+}
+.stars { display: flex; gap: 3px; margin-bottom: 14px; }
+.star {
+  width: 16px; height: 16px;
+  background: var(--sun);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+.review-text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6a4e38;
+  font-style: italic;
+  margin-bottom: 22px;
+}
+.reviewer { display: flex; align-items: center; gap: 12px; }
+.rev-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+}
+.rev-name  { font-weight: 800; font-size: 14px; color: var(--brown); }
+.rev-city  { font-size: 12px; color: #a08070; margin-top: 2px; }
+
+/* ── CTA ── */
+.cta-section {
+  padding: 100px 24px;
+  text-align: center;
+  background: radial-gradient(ellipse 80% 70% at 50% 80%, #fff8ec, var(--cream));
+}
+.cta-inner { max-width: 620px; margin: 0 auto; }
+.cta-section .sec-title { font-size: var(--cta-title-size); }
+.cta-section p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--brown);
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+.btn-wa-big {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--wa);
+  color: white;
+  text-decoration: none;
+  padding: 20px 52px;
+  border-radius: var(--radius-btn);
+  font-weight: 900;
+  font-size: 20px;
+  box-shadow: 0 10px 48px rgba(37,211,102,0.4);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.btn-wa-big:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 20px 64px rgba(37,211,102,0.5); }
+.cta-note {
+  margin-top: 20px;
+  font-size: var(--small-text-size);
+  color: var(--brown);
+  opacity: 0.45;
+  font-weight: 600;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--purple);
+  padding: 36px 24px;
+  text-align: center;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: white;
+  margin-bottom: 10px;
+}
+.footer-brand span { color: var(--sun); }
+.footer-sub { font-size: var(--small-text-size); color: rgba(255,255,255,0.45); font-weight: 600; }
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: var(--small-text-size);
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--sun); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes bounce  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes floatAnim {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-20px) rotate(8deg); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 760px) {
+  .about-section::before, .about-section::after { display: none; }
+  .about-img-box { width: 130px; height: 180px; }
+}
+@media (max-width: 520px) {
+  .flavours-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .card-body { padding: 14px 14px 18px; }
+  .card-name { font-size: 20px; }
+  .hero-btns { flex-direction: column; align-items: center; }
+  .btn-wa, .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
+  .btn-wa-big { padding: 18px 32px; font-size: 17px; }
+}
+
+.wa-icon    { width: 20px; height: 20px; fill: currentColor; }
+.wa-icon-lg { width: 26px; height: 26px; fill: currentColor; }
+</style>
+</head>
+<body>
+
+
+<!-- ============================================================
+  📱 WHATSAPP PHONE NUMBER
+  Replace 212XXXXXXXXX with your real number (no + or spaces).
+  Example Morocco number: 212612345678
+  It appears in every "Commander" button below.
+  Quick way: use Find & Replace (Ctrl+H) to swap
+  212XXXXXXXXX → your number everywhere at once.
+============================================================ -->
+
+
+<!-- ============================================================
+  🖼️  IMAGES
+  Put your images in a folder called "images/" next to this file.
+  File names expected:
+    images/logo-haila.png
+    images/healthy.jpg
+    images/tiramisu.jpg
+    images/paprika.jpg
+    images/arabian.jpg
+  If an image is missing the page will show a coloured emoji fallback.
+============================================================ -->
+
+
+<!-- ══════════════════════════════════ NAV ══
+  🖊️  Edit: brand name, nav link labels, button label
+══════════════════════════════════════════════ -->
+<nav>
+  <!-- Brand / logo text in the nav bar -->
+  <a class="nav-brand" href="#"><span>Granola</span> Haila</a>
+
+  <div class="nav-links">
+    <!-- Nav links (hidden on mobile) -->
+    <a class="hide-mobile" href="#saveurs">Saveurs</a>
+    <a class="hide-mobile" href="#histoire">Histoire</a>
+    <a class="hide-mobile" href="#avis">Avis</a>
+
+    <!-- Nav WhatsApp button -->
+    <a class="nav-wa"
+       href="https://wa.me/212XXXXXXXXX?text=Bonjour!%20Je%20voudrais%20commander%20un%20Granola%20Haila%20%F0%9F%8C%9E"
+       target="_blank">
+      <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Commander <!-- ← button label -->
+    </a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════ HERO ══
+  🖊️  Edit: floating emojis, logo src, tagline, sub-text, button labels
+══════════════════════════════════════════════ -->
+<section class="hero">
+
+  <!-- Decorative floating emojis (background) -->
+  <div class="hero-floats" aria-hidden="true">
+    <span class="float-item">🌾</span>
+    <span class="float-item">🌿</span>
+    <span class="float-item">🍫</span>
+    <span class="float-item">🌶️</span>
+    <span class="float-item">🌙</span>
+    <span class="float-item">❤️</span>
+  </div>
+
+  <!-- Logo image — swap src for your file -->
+  <img
+    class="hero-logo"
+    src="images/logo-haila.png"
+    alt="Granola Haila"
+    onerror="this.style.display='none'; document.getElementById('logo-text').style.display='block'"
+  >
+  <!-- Text fallback shown only when logo image is missing -->
+  <div id="logo-text" style="display:none; font-family:'Pacifico',cursive; font-size:clamp(36px,8vw,68px); color:var(--purple); margin-bottom:28px; animation:fadeUp 0.9s ease both">
+    Granola Haila
+  </div>
+
+  <!-- Main tagline -->
+  <p class="hero-tagline">Fait Maison, Avec Amour ♥</p>
+
+  <!-- Sub-line (dots are the <span> separators) -->
+  <p class="hero-sub">4 Saveurs <span>·</span> 100% Naturel <span>·</span> Made in Morocco</p>
+
+  <!-- Hero buttons -->
+  <div class="hero-btns">
+    <a href="https://wa.me/212XXXXXXXXX?text=Bonjour!%20Je%20voudrais%20commander%20un%20Granola%20Haila%20%F0%9F%8C%9E"
+       target="_blank" class="btn-wa">
+      <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Commander Maintenant <!-- ← button label -->
+    </a>
+    <a href="#saveurs" class="btn-outline">Découvrir les Saveurs ↓</a><!-- ← button label -->
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="hero-scroll-text">Défiler</span>
+    <span class="hero-scroll-dot"></span>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════ TRUST STRIP ══
+  🖊️  Edit: trust badge labels (emoji + text)
+══════════════════════════════════════════════ -->
+<div class="trust-strip">
+  <div class="trust-item">🌿 100% Naturel</div>
+  <div class="trust-item">🤍 Fait Maison</div>
+  <div class="trust-item">🇲🇦 Made in Morocco</div>
+  <div class="trust-item">🚫 Sans Conservateurs</div>
+  <div class="trust-item">🚚 Livraison Partout au Maroc</div>
+</div>
+
+
+<!-- ══════════════════════════════════ FLAVOURS ══
+  🖊️  Edit: section label, title, subtitle, and each card below.
+  Each card block is clearly labelled — copy/paste to add more.
+══════════════════════════════════════════════ -->
+<section class="section" id="saveurs">
+
+  <!-- Section heading -->
+  <div class="sec-header reveal">
+    <span class="sec-label">🌞 Nos Créations</span>
+    <h2 class="sec-title">4 Saveurs, 4 Univers</h2>
+    <p class="sec-sub">Chaque recette est une aventure gustative — du doux au corsé, de l'oriental au gourmand.</p>
+  </div>
+
+  <div class="flavours-grid">
+
+    <!-- ── CARD 1 : HEALTHY ──────────────────────────────
+      colour theme: green  (controlled by class "c-healthy")
+      to change colour → edit --g-healthy in the palette above
+    ───────────────────────────────────────────────────── -->
+    <div class="card c-healthy reveal">
+      <img class="card-media" src="https://plus.unsplash.com/premium_photo-1755882951386-2c2c05f32f76?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Granola Healthy"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-media-fallback" style="display:none">🌿</div><!-- fallback emoji -->
+      <div class="card-body">
+        <span class="card-badge">🌱 Nature</span>        <!-- badge label -->
+        <div class="card-name">HEALTHY</div>             <!-- product name -->
+        <p class="card-desc">Flocons d'avoine, graines de courge, graines de tournesol, amandes, thym, huile de coco.</p><!-- description -->
+        <div class="card-pricing">
+          <div class="quantity-picker" data-flavour="Healthy">
+            <button type="button" class="quantity-button active" data-price="200">1kg — 200dh</button>
+            <button type="button" class="quantity-button" data-price="100">500g — 100dh</button>
+            <button type="button" class="quantity-button" data-price="50">200g — 50dh</button>
+          </div>
+          <div class="price-tag">Prix : <span class="price-value">200</span> dh</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 2 : TIRAMISU ─────────────────────────────
+      colour theme: dark brown  (class "c-tiramisu")
+    ───────────────────────────────────────────────────── -->
+    <div class="card c-tiramisu reveal">
+      <img class="card-media" src="https://plus.unsplash.com/premium_photo-1755882951386-2c2c05f32f76?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Granola Tiramisu"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-media-fallback" style="display:none">☕</div>
+      <div class="card-body">
+        <span class="card-badge">☕ Gourmand</span>
+        <div class="card-name">TIRAMISU</div>
+        <p class="card-desc">Flocons d'avoine, cacao, chocolat noir 75% et chocolat noir 55%.</p>
+        <div class="card-pricing">
+          <div class="quantity-picker" data-flavour="Tiramisu">
+            <button type="button" class="quantity-button active" data-price="200">1kg — 200dh</button>
+            <button type="button" class="quantity-button" data-price="100">500g — 100dh</button>
+            <button type="button" class="quantity-button" data-price="50">200g — 50dh</button>
+          </div>
+          <div class="price-tag">Prix : <span class="price-value">200</span> dh</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 3 : PAPRIKA ──────────────────────────────
+      colour theme: red  (class "c-paprika")
+    ───────────────────────────────────────────────────── -->
+    <div class="card c-paprika reveal">
+      <img class="card-media" src="https://plus.unsplash.com/premium_photo-1755882951386-2c2c05f32f76?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Granola Paprika"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-media-fallback" style="display:none">🌶️</div>
+      <div class="card-body">
+        <span class="card-badge">🌶️ Épicé</span>
+        <div class="card-name">PAPRIKA</div>
+        <p class="card-desc">Flocons d'avoine, noix de cajou, amandes, ail, paprika fumé, sauce soja, huile de coco.</p>
+        <div class="card-pricing">
+          <div class="quantity-picker" data-flavour="Paprika">
+            <button type="button" class="quantity-button active" data-price="200">1kg — 200dh</button>
+            <button type="button" class="quantity-button" data-price="100">500g — 100dh</button>
+            <button type="button" class="quantity-button" data-price="50">200g — 50dh</button>
+          </div>
+          <div class="price-tag">Prix : <span class="price-value">200</span> dh</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CARD 4 : ARABIAN ──────────────────────────────
+      colour theme: gold  (class "c-arabian")
+    ───────────────────────────────────────────────────── -->
+    <div class="card c-arabian reveal">
+      <img class="card-media" src="https://plus.unsplash.com/premium_photo-1755882951386-2c2c05f32f76?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Granola Arabian"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="card-media-fallback" style="display:none">🌙</div>
+      <div class="card-body">
+        <span class="card-badge">🌙 Oriental</span>
+        <div class="card-name">ARABIAN</div>
+        <p class="card-desc">Flocons d'avoine, cardamome, cannelle, pistaches, graines de sésame et tahini, dattes et mélasse de dattes.</p>
+        <div class="card-pricing">
+          <div class="quantity-picker" data-flavour="Arabian">
+            <button type="button" class="quantity-button active" data-price="200">1kg — 200dh</button>
+            <button type="button" class="quantity-button" data-price="100">500g — 100dh</button>
+            <button type="button" class="quantity-button" data-price="50">200g — 50dh</button>
+          </div>
+          <div class="price-tag">Prix : <span class="price-value">200</span> dh</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════ ABOUT ══
+  🖊️  Edit: section label, title, paragraphs, pills, and image sources
+══════════════════════════════════════════════ -->
+<section class="about-section" id="histoire">
+  <div class="about-inner">
+
+    <span class="sec-label">Notre Histoire</span>
+    <h2 class="sec-title reveal">Fait avec soin, à la maison</h2>
+
+    <!-- Body paragraphs — edit freely -->
+    <p class="reveal">Granola Haila est né d'une vraie passion pour le goût authentique et le bien manger. Chaque recette est préparée à la main, avec des ingrédients naturels soigneusement choisis.</p>
+    <p class="reveal">Pas d'additifs, pas de conservateurs — juste des flocons, des fruits secs, des épices, et beaucoup d'amour.</p>
+
+    <!-- Keyword pills — add or remove <span class="pill"> as needed -->
+    <div class="about-pills reveal">
+      <span class="pill">🌿 100% Naturel</span>
+      <span class="pill">🤍 Fait Maison</span>
+      <span class="pill">🇲🇦 Made in Morocco</span>
+      <span class="pill">🚫 Sans Additifs</span>
+      <span class="pill">✨ Artisanal</span>
+    </div>
+
+    <!-- Lifestyle photo row — swap src for real photos, or delete boxes you don't need -->
+    <div class="about-img-row reveal">
+      <div class="about-img-box"><img src="https://plus.unsplash.com/premium_photo-1755882951386-2c2c05f32f76?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  alt="Granola Healthy"  onerror="this.parentElement.style.background='#2E7D32'"></div>
+      <div class="about-img-box"><img src="https://plus.unsplash.com/premium_photo-1755882951386-2c2c05f32f76?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Granola Tiramisu" onerror="this.parentElement.style.background='#4A1F05'"></div>
+      <div class="about-img-box"><img src="https://plus.unsplash.com/premium_photo-1755882951386-2c2c05f32f76?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  alt="Granola Paprika"  onerror="this.parentElement.style.background='#B71C1C'"></div>
+      <div class="about-img-box"><img src="https://plus.unsplash.com/premium_photo-1755882951386-2c2c05f32f76?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  alt="Granola Arabian"  onerror="this.parentElement.style.background='#6B5A1A'"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════ REVIEWS ══
+  🖊️  Edit: section label, title, subtitle, and each review block.
+  Each review has: stars, quote text, avatar colour+letter, name, city.
+══════════════════════════════════════════════ -->
+<section class="section" id="avis">
+
+  <!-- Section heading -->
+  <div class="sec-header reveal">
+    <span class="sec-label">⭐ Avis Clients</span>
+    <h2 class="sec-title">Ce qu'ils en disent</h2>
+    <p class="sec-sub">Des centaines de Marocains ont déjà adopté Granola Haila dans leur quotidien.</p>
+  </div>
+
+  <div class="reviews-grid">
+
+    <!-- ── REVIEW 1 ── -->
+    <div class="review-card reveal">
+      <div class="stars"><!-- 5 stars --><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="review-text">« Le Tiramisu est absolument incroyable. Je le mange tous les matins avec du yaourt — c'est un pur bonheur. Je ne peux plus m'en passer ! »</p>
+      <div class="reviewer">
+        <div class="rev-avatar" style="background:#6B3315">S</div><!-- initial + bg colour -->
+        <div>
+          <div class="rev-name">Salma R.</div>
+          <div class="rev-city">Casablanca</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REVIEW 2 ── -->
+    <div class="review-card reveal">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="review-text">« Le Paprika m'a complètement surprise ! Salé, épicé, croustillant — parfait comme snack sain au bureau. Je le commande toutes les semaines. »</p>
+      <div class="reviewer">
+        <div class="rev-avatar" style="background:#B71C1C">Y</div>
+        <div>
+          <div class="rev-name">Yousra M.</div>
+          <div class="rev-city">Rabat</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REVIEW 3 ── -->
+    <div class="review-card reveal">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="review-text">« L'Arabian sent tellement bon — la cardamome, les dattes, le tahini... ça me rappelle les saveurs de chez nous. Je recommande les yeux fermés. »</p>
+      <div class="reviewer">
+        <div class="rev-avatar" style="background:#6B5A1A">K</div>
+        <div>
+          <div class="rev-name">Karim B.</div>
+          <div class="rev-city">Marrakech</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REVIEW 4 ── -->
+    <div class="review-card reveal">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="review-text">« J'ai commandé le pack 4 saveurs pour tester et je suis conquise. La qualité est irréprochable. Livraison rapide et packaging magnifique ! »</p>
+      <div class="reviewer">
+        <div class="rev-avatar" style="background:#4A2F8F">N</div>
+        <div>
+          <div class="rev-name">Nadia L.</div>
+          <div class="rev-city">Agadir</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REVIEW 5 ── -->
+    <div class="review-card reveal">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="review-text">« Mon coup de cœur c'est le Healthy avec le thym. C'est frais, léger et ça a vraiment le goût de fait maison. Bravo Haila ! »</p>
+      <div class="reviewer">
+        <div class="rev-avatar" style="background:#2E7D32">H</div>
+        <div>
+          <div class="rev-name">Hamza K.</div>
+          <div class="rev-city">Fès</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REVIEW 6 ── -->
+    <div class="review-card reveal">
+      <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="review-text">« Un cadeau parfait pour les amoureux du bon manger. J'en offre régulièrement à ma famille. Le packaging est adorable et les saveurs sont au top. »</p>
+      <div class="reviewer">
+        <div class="rev-avatar" style="background:#D84315">L</div>
+        <div>
+          <div class="rev-name">Leila A.</div>
+          <div class="rev-city">Tanger</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════ CTA ══
+  🖊️  Edit: label, title, body text, button label, fine-print note
+══════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <span class="sec-label reveal">🛒 Commander</span>
+    <h2 class="sec-title reveal">Prêt à craquer ?</h2>
+    <p class="reveal">Livraison à domicile partout au Maroc. Contactez-nous directement sur WhatsApp pour passer votre commande — réponse rapide garantie !</p>
+    <a href="https://wa.me/212XXXXXXXXX?text=Bonjour!%20Je%20voudrais%20commander%20un%20Granola%20Haila%20%F0%9F%8C%9E"
+       target="_blank" class="btn-wa-big reveal">
+      <svg class="wa-icon-lg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Commander sur WhatsApp <!-- ← button label -->
+    </a>
+    <!-- Fine print below the button -->
+    <p class="cta-note">Disponible 7j/7 · Livraison rapide · Paiement à la livraison disponible</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════ FOOTER ══
+  🖊️  Edit: brand name, tagline, footer links
+══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand"><span>Granola</span> Haila 🌞</div>
+  <div class="footer-sub">Fait Maison Avec Amour · Made in Morocco 🇲🇦 · © 2025</div>
+  <div class="footer-links">
+    <a href="#saveurs">Nos Saveurs</a>
+    <a href="#histoire">Notre Histoire</a>
+    <a href="#avis">Avis Clients</a>
+    <a href="https://wa.me/212XXXXXXXXX" target="_blank">WhatsApp</a>
+    <a href="https://instagram.com/granola.haila" target="_blank">Instagram</a><!-- ← update Instagram handle -->
+  </div>
+</footer>
+
+
+<script>
+/* Scroll-reveal animation — no need to edit */
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => obs.observe(el));
+
+const quantityPickers = document.querySelectorAll('.quantity-picker');
+quantityPickers.forEach(picker => {
+  const buttons = picker.querySelectorAll('.quantity-button');
+  const priceTag = picker.nextElementSibling?.querySelector('.price-value');
+  if (!priceTag) return;
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      priceTag.textContent = button.dataset.price;
+    });
+  });
+});
+</script>
+</body>
 </html>
